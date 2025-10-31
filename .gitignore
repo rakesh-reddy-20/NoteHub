@@ -1,0 +1,53 @@
+# mac / misc
+.DS_Store
+Thumbs.db
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# node modules anywhere (safe to include in root)
+node_modules/
+**/node_modules/
+
+# build / dist
+build/
+dist/
+**/build/
+**/dist/
+
+# environment files
+.env
+.env.local
+.env.*.local
+
+# OS files
+.vscode/
+.idea/
+
+# npm / yarn / pnpm
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# temporary
+tmp/
+temp/
+
+# local dev certificates
+*.pem
+
+# editor files
+*.sublime*
+*.swp
+
+# cloudinary / uploads or local upload temp
+uploads/
+tmp_uploads/
+
+# Docker
+docker-compose.override.yml
+.env.docker
