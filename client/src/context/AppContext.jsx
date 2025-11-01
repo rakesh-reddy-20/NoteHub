@@ -16,14 +16,12 @@ export const AppContextProvider = ({ children }) => {
         withCredentials: true,
       });
 
-      if (data.success) {
+      if (data?.success) {
         setIsLoggedIn(true);
         getUserData();
-      } else {
-        toast.error(data.message || "Failed to fetch user data");
       }
     } catch (error) {
-      toast.error(data.message || "Failed to fetch user data");
+      console.error("Failed to fetch user data");
     }
   };
 
@@ -33,13 +31,11 @@ export const AppContextProvider = ({ children }) => {
         withCredentials: true,
       });
 
-      if (data.success) {
+      if (data?.success) {
         setUser(data.user);
-      } else {
-        toast.error(data.message || "Failed to fetch user data");
       }
     } catch (error) {
-      toast.error(data.message || "Failed to fetch user data");
+      console.error(error.message || "Failed to fetch user data");
     }
   };
 

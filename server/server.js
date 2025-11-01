@@ -21,7 +21,13 @@ const allowedOrigins = [process.env.FRONTEND_URL];
 
 // Middleware
 app.use(express.json());
-app.use(cors({ credentials: true, origin: allowedOrigins }));
+app.use(
+  cors({
+    origin: allowedOrigins,
+    credentials: true, // allow cookies across origins
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  })
+);
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 app.use(errorHandler);

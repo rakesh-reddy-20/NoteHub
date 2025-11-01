@@ -97,8 +97,8 @@ const login = async (req, res) => {
 
     res.cookie("token", token, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: process.env.NODE_ENV === "production" ? "none" : "strict",
+      secure: process.env.NODE_ENV === "production", // required on Render
+      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
       maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
     });
 
@@ -267,7 +267,7 @@ const isAuthenticated = (req, res) => {
     });
   } catch (error) {
     // fallback in case something breaks
-    return res.status(401).json({
+    return res.status(400).json({
       success: false,
       message: "Invalid token.",
       error: error.message,
