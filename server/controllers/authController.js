@@ -51,7 +51,7 @@ const register = async (req, res) => {
       text: `Hello ${newUser.name},\n\nThank you for registering NoteHub.\n\nBest regards!`,
     };
 
-    await transporter.sendMail(mailOPtions);
+    // await transporter.sendMail(mailOPtions);
 
     return res
       .status(201)
