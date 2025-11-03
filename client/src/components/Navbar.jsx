@@ -163,7 +163,7 @@ const Navbar = () => {
 
                   {/* Options */}
                   <div className="mt-1">
-                    {!user.isVerified && (
+                    {/* {!user.isVerified && (
                       <div
                         onClick={sendVerificationOtp}
                         className="flex items-center gap-2 px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md transition cursor-pointer"
@@ -171,7 +171,7 @@ const Navbar = () => {
                         <BellRing className="w-4 h-4 text-gray-600" />
                         Get all Notifications
                       </div>
-                    )}
+                    )} */}
 
                     <div
                       onClick={() => setShowDeletePopup(true)}
@@ -263,7 +263,7 @@ const Navbar = () => {
               </li>
               {isLoggedIn && user ? (
                 <>
-                  <li>
+                  {/* <li>
                     <Link
                       to="/contact"
                       onClick={() => setIsOpen(false)}
@@ -271,7 +271,7 @@ const Navbar = () => {
                     >
                       Get all notifications
                     </Link>
-                  </li>
+                  </li> */}
                   <li>
                     <Link
                       to="/contact"
