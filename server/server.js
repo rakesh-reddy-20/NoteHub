@@ -17,14 +17,25 @@ import connectDB from "./config/db.js";
 // Initialize Express app
 const app = express();
 const PORT = process.env.PORT || 8080;
-const allowedOrigins = [process.env.FRONTEND_URL];
+const allowedOrigins = ["http://localhost:5173", process.env.FRONTEND_URL];
 
 // Middleware
 app.use(express.json());
 app.use(
   cors({
-    origin: allowedOrigins,
-    credentials: true, // allow cookies across origins
+    origin: function (origin, callback) {
+      if (!origin) return callback(null, true); // allow server-to-server or tools like Postman
+      if (
+        allowedOrigins.includes(origin) ||
+        /\.vercel\.app$/.test(new URL(origin).hostname) // allow all vercel subdomains
+      ) {
+        callback(null, true);
+      } else {
+        console.log("Blocked by CORS:", origin);
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   })
 );
